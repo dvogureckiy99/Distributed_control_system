@@ -118,8 +118,9 @@ set(0,'DefaultAxesFontSize',14,'DefaultAxesFontName','Times New Roman');%шри�
 fig=figure('Units', 'normalized', 'OuterPosition', [0 0 1 1]);
 %h=plot(0,0);
 h = animatedline;
+title("процесс в возмущающей скважине");
 ylabel( [{"рассогласования уровня в точке измерения"};{" относительно начального состояния, м"}]);
-xlabel("часы");
+xlabel("время, час");
 grid on
 drawnow
 tau=0;
@@ -142,7 +143,7 @@ for i=1:tau1
                         kz1*(H1(x_i-1,y_i,z_i)-2*H1(x_i,y_i,z_i)+H1(x_i+1,y_i,z_i))/(dz1^2)) );
                     dH2(x_i,y_i,z_i) = single( dtau*(1/eta2)*(kx2*(H2(x_i-1,y_i,z_i)-2*H2(x_i,y_i,z_i)+H2(x_i+1,y_i,z_i))/(dx^2) + ...
                         ky2*(H2(x_i-1,y_i,z_i)-2*H2(x_i,y_i,z_i)+H2(x_i+1,y_i,z_i))/(dy^2) + ...
-                        kz2*(H2(x_i-1,y_i,z_i)-2*H2(x_i,y_i,z_i)+H2(x_i+1,y_i,z_i))/(dz2^2)) - V*dtau*del );
+                        kz2*(H2(x_i-1,y_i,z_i)-2*H2(x_i,y_i,z_i)+H2(x_i+1,y_i,z_i))/(dz2^2)) + V*dtau*del );
                 end
             end        
         end
